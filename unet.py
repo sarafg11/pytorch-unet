@@ -176,3 +176,12 @@ class Unet(nn.Module):
             conv_kernel_size, padding=1, bias=False
         )
         return conv_1, conv_2
+
+
+if __name__ == "__main__":
+    'Test execution of the net if the module is run.'
+    net = Unet()
+    print(net)
+    input_values = torch.randn(1, 3, 256, 256)
+    output = net(input_values)
+    print(output)
