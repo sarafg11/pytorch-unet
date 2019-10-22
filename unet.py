@@ -55,6 +55,18 @@ class Unet(nn.Module):
         features: List[int], conv_kernel_size: int,
         final_conv_kernel_size: int, pool_kernel_size: int, stride: int,
     ) -> None:
+        """Create all the different blocks of the architecture to be used in
+        the forward method.
+
+        Arguments:
+            input_channels {int} -- Input number of channels.
+            output_channels {int} -- Output number of channels.
+            features {List[int]} -- List of number of features for each step.
+            conv_kernel_size {int} -- Convolution kernel size.
+            final_conv_kernel_size {int} -- Final convolution kernel size.
+            pool_kernel_size {int} -- Kernel size for Max Pooling.
+            stride {int} -- Stride for the convolutions.
+        """
 
         self.encoder_1 = Unet.block(
             input_channels, features[0], conv_kernel_size,
@@ -113,7 +125,7 @@ class Unet(nn.Module):
             output_channels {int} -- Output number of channels.
             conv_kernel_size {int} -- Kernel size for the convolution.
 
-        Returns:
+        Return:
             nn.Sequential -- Sequence of the steps that the block follows.
         """
         conv_1, conv_2 = Unet.normal_cell_convolutions(
@@ -142,7 +154,7 @@ class Unet(nn.Module):
             conv_kernel_size {int} -- Kernel size for the convolution.
             stride {int} -- Stride for the convolution
 
-        Returns:
+        Return:
             nn.ConvTranspose2d -- 2D Convolution.
         """
         up_conv = nn.ConvTranspose2d(
@@ -164,7 +176,7 @@ class Unet(nn.Module):
         Keyword Arguments:
             conv_kernel_size {int} -- [description] (default: {3})
 
-        Returns:
+        Return:
             nn.Conv2d -- 2D Convolution.
         """
         conv_1 = nn.Conv2d(
