@@ -174,7 +174,7 @@ class Unet(nn.Module):
             output_channels {int} -- Output number of channels.
 
         Keyword Arguments:
-            conv_kernel_size {int} -- [description] (default: {3})
+            conv_kernel_size {int} -- (default: {3})
 
         Return:
             nn.Conv2d -- 2D Convolution.
